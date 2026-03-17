@@ -14,7 +14,7 @@ POST /api/deals
 
 Request Body
 
-{ "target_location": "Anaheim", "purchase_timeline": "6 months" }
+{ "role": "buyer", "target_location": "Anaheim", "timeline": "6 months" }
 
 Response
 
@@ -28,53 +28,63 @@ GET /api/deals/{dealId}
 
 Response
 
-{ "id": "uuid", "status": "active", "target_location": "Anaheim" }
+{ "id": "uuid", "role": "buyer", "status": "active", "target_location": "Anaheim" }
 
 ------------------------------------------------------------------------
 
-## Property Analysis
+## Buyer Intake
 
-POST /api/listings/analyze
+POST /api/buyers/intake
 
 Request
 
-{ "listing_url": "https://listing.example.com" }
+{ "deal_id": "uuid", "budget": 850000, "target_location": "Anaheim", "timeline": "6 months" }
 
 Response
 
-{ "summary": "...", "risk_flags": \[\], "estimated_price_range": {
-"low": 820000, "high": 860000 } }
+{ "status": "saved", "next_step": "Complete buyer readiness checklist" }
 
 ------------------------------------------------------------------------
 
-## Financing Scenarios
+## Seller Intake
 
-POST /api/financing/scenarios
+POST /api/sellers/intake
 
 Request
 
-{ "property_price": 850000, "down_payment": 170000, "interest_rate":
-0.065 }
+{ "deal_id": "uuid", "property_address": "123 Main St", "timeline": "3 months", "property_condition": "good" }
 
 Response
 
-{ "loan_amount": 680000, "monthly_payment": 4300, "cash_to_close":
-185000 }
+{ "status": "saved", "next_step": "Review listing prep checklist" }
 
 ------------------------------------------------------------------------
 
-## Offer Recommendation
+## Guidance
 
-POST /api/offers/recommend
+POST /api/guidance/generate
 
 Request
 
-{ "deal_id": "uuid", "property_id": "uuid" }
+{ "deal_id": "uuid" }
 
 Response
 
-{ "recommended_low": 820000, "recommended_high": 845000, "notes":
-"Consider inspection contingency" }
+{ "summary": "...", "risk_flags": \[\], "recommended_next_steps": ["..."] }
+
+------------------------------------------------------------------------
+
+## Checklist
+
+POST /api/checklists/generate
+
+Request
+
+{ "deal_id": "uuid" }
+
+Response
+
+{ "checklist_id": "uuid", "items": [{ "title": "Get pre-approval", "status": "open" }] }
 
 ------------------------------------------------------------------------
 
@@ -84,7 +94,7 @@ POST /api/workflow/run
 
 Request
 
-{ "deal_id": "uuid", "workflow": "property_analysis" }
+{ "deal_id": "uuid", "workflow": "buyer_guidance" }
 
 Response
 

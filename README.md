@@ -3,8 +3,9 @@
 Glasshouse is an AI-assisted transaction workspace designed to bring
 transparency and structure to real estate deals.
 
-The platform helps buyers analyze properties, evaluate financing
-scenarios, structure offers, and manage the path to closing.
+The platform helps buyers and sellers stay organized, understand next
+steps, and coordinate the path from initial intent through closing
+preparation.
 
 Instead of replacing agents or lenders, Glasshouse focuses on **decision
 intelligence and workflow coordination**.
@@ -13,10 +14,9 @@ intelligence and workflow coordination**.
 
 ## Key Capabilities
 
--   Property listing analysis
--   Financing scenario modeling
--   Offer strategy recommendations
--   Transaction milestone tracking
+-   Buyer intake and next-step guidance
+-   Seller prep and listing-readiness guidance
+-   Shared transaction milestone tracking
 -   Document workspace
 
 ------------------------------------------------------------------------
@@ -51,5 +51,5 @@ http://localhost:3000
 ## Vision
 
 Glasshouse aims to become a **transaction orchestration platform for
-real estate**, providing structured workflows and transparency across
-the entire deal lifecycle.
+real estate**, starting with lightweight buyer and seller assistance and
+expanding into structured workflows across the deal lifecycle.

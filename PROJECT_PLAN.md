@@ -1,19 +1,19 @@
-# Real Estate Transaction Copilot  
+# Real Estate Transaction Assistant
 ## PROJECT_PLAN.md
 
 ## 1. Project Overview
 
-**Real Estate Transaction Copilot** is an AI-assisted workflow platform designed to help buyers, and eventually buyer agents, analyze properties, model financing, structure offers, and manage the transaction timeline.
+**Real Estate Transaction Assistant** is an AI-assisted workflow platform designed to help buyers and sellers get organized, understand what to do next, and manage the transaction timeline.
 
 The product focuses on reducing the **complexity and opacity of real estate transactions** by providing:
 
-- Property intelligence
-- Financing scenario modeling
-- Offer guidance
+- Buyer intake and guidance
+- Seller prep and listing-readiness guidance
+- Shared transaction coordination
 - Transaction milestone tracking
 - Document organization
 
-This MVP targets **buyer-side decision support and coordination**, not full automation of licensed real estate roles.
+This MVP targets **buyer and seller decision support and coordination**, not full automation of licensed real estate roles.
 
 The long-term vision is to evolve into a **transaction orchestration platform** for real estate workflows.
 
@@ -23,16 +23,16 @@ The long-term vision is to evolve into a **transaction orchestration platform** 
 
 ### Primary Objective
 
-Build a **minimum viable product** that enables buyers to:
+Build a **minimum viable product** that enables buyers and sellers to:
 
-1. Analyze a property listing
-2. Evaluate affordability and financing scenarios
-3. Generate an offer strategy
-4. Track the steps toward closing
+1. Capture their goals, timing, and readiness
+2. Receive tailored next-step guidance
+3. Track the steps toward listing or purchase progress
+4. Keep transaction information organized in one workspace
 
 ### Secondary Objectives
 
-- Provide structured AI-assisted insights for buyers
+- Provide structured AI-assisted insights for both sides of the transaction
 - Maintain a **persistent transaction record**
 - Create a platform architecture that can evolve into a full **transaction orchestration system**
 
@@ -41,10 +41,10 @@ Build a **minimum viable product** that enables buyers to:
 The MVP will **not attempt to**:
 
 - Replace licensed real estate agents
-- Automate mortgage underwriting
-- Perform escrow/title services
+- Automate pricing, underwriting, or negotiation decisions
+- Perform escrow, title, or legal services
 - Act as legal or financial advisor
-- Connect buyers and sellers directly
+- Operate as a marketplace between buyers and sellers
 
 Instead, it focuses on **decision intelligence and workflow coordination**.
 
@@ -54,15 +54,16 @@ Instead, it focuses on **decision intelligence and workflow coordination**.
 
 ### Primary Users
 
-Home buyers who want to:
+Home buyers and home sellers who want to:
 
-- Better understand properties
-- Model affordability
-- Structure offers
-- Manage transaction steps
+- Better understand what to do next
+- Stay on top of tasks and milestones
+- Keep documents and notes organized
+- Reduce transaction confusion
 
 ### Secondary Users (future)
 
+- Listing agents
 - Buyer agents
 - Mortgage brokers
 - Transaction coordinators
@@ -73,100 +74,99 @@ Home buyers who want to:
 
 ### Core Promise
 
-Help buyers answer four questions clearly:
+Help buyers and sellers answer four questions clearly:
 
-1. **Can I afford this property?**
-2. **What is a reasonable offer?**
-3. **What are the main risks?**
-4. **What happens next in the transaction?**
+1. **What should I do next?**
+2. **What information do I still need?**
+3. **What are the main risks or blockers?**
+4. **How do I stay on track through the transaction?**
 
 ### MVP Wedge
 
 The MVP should be positioned as:
 
-**AI Offer Desk / Buyer Transaction Copilot**
+**Buyer + Seller Transaction Assistant**
 
-This keeps the product narrow, credible, and monetizable without overpromising full automation of regulated roles.
+This keeps the product narrow, credible, and useful without overpromising full automation of regulated roles.
 
 ---
 
 ## 5. Core MVP Features
 
-### 5.1 Buyer Profile
+### 5.1 Buyer Intake
 
 Collect buyer inputs:
 
 - Budget
-- Income
-- Down payment
 - Location preferences
 - Purchase timeline
+- Property priorities
 
 These inputs drive:
 
-- Affordability modeling
-- Financing scenarios
-- Offer recommendations
+- Personalized guidance
+- Recommended next steps
+- Checklist generation
 
-### 5.2 Property Analysis
+### 5.2 Seller Intake
 
-Users provide a listing URL or property details.
+Collect seller inputs:
 
-System generates:
+- Property address
+- Selling timeline
+- Property condition
+- Known constraints or priorities
 
-- Property summary
-- Risk flags
-- Estimated comparable price band
-- HOA and disclosure summaries
-- Notes for negotiation
+These inputs drive:
 
-### 5.3 Financing Scenarios
+- Listing-readiness guidance
+- Suggested prep tasks
+- Document and disclosure reminders
 
-Deterministic mortgage calculations including:
+### 5.3 Shared Checklist and Timeline
 
-- Estimated monthly payment
-- Principal + interest
-- Taxes and insurance estimates
-- Cash to close
-- Down payment scenarios
+The system creates a dynamic workflow for each buyer or seller.
 
-The LLM explains scenarios while calculations are done with **deterministic code**.
+Example buyer milestones:
 
-### 5.4 Offer Builder
+- Financing or pre-approval
+- Tour and shortlist properties
+- Offer preparation
+- Contract milestones
+- Inspection and appraisal
+- Closing preparation
 
-The system proposes:
+Example seller milestones:
 
-- Estimated offer range
-- Negotiation strategies
-- Potential seller concessions
-- Inspection considerations
+- Prepare home
+- Gather disclosures
+- Listing preparation
+- Review incoming offers
+- Contract milestones
+- Closing preparation
 
-Outputs are suggestions only.
+This acts as a **transaction workspace** centered on progress and coordination.
 
-### 5.5 Transaction Timeline
+### 5.4 Guidance Layer
 
-Once a user moves toward a purchase, the system creates a timeline.
+The system generates:
 
-Example milestones:
+- Tailored next-step recommendations
+- Readiness notes
+- Risk or blocker flags
+- Suggested questions to ask agents or counterparties
 
-- Offer submitted
-- Offer accepted
-- Earnest deposit
-- Inspection period
-- Appraisal
-- Loan approval
-- Closing
+Outputs are suggestions only and should remain reviewable by the user.
 
-This acts as a **transaction workspace**.
-
-### 5.6 Document Workspace
+### 5.5 Document Workspace
 
 Users can upload or attach transaction documents such as:
 
 - Disclosures
 - Pre-approval letters
+- Listing materials
 - Inspection reports
-- Escrow documents
+- Escrow or title documents
 
 The system should organize these by deal and make them retrievable from the workspace.
 
@@ -182,8 +182,8 @@ Responsibilities:
 
 - UI
 - Dashboards
-- Deal workspace
-- Forms and workflows
+- Buyer and seller workspaces
+- Forms, checklists, and workflows
 
 Deployment target:
 
@@ -208,8 +208,8 @@ Responsibilities:
 
 - Deal state
 - User data
-- Financing scenarios
-- Offer history
+- Checklists
+- Guidance outputs
 - Transaction milestones
 
 ### Storage
@@ -250,7 +250,7 @@ The moat is the **persistent deal record**, not the chat experience.
 
 ### 7.3 Deterministic Math for Financial Outputs
 
-Mortgage, payment, and affordability calculations must be computed with deterministic code.
+Any financial calculations introduced later must be computed with deterministic code.
 
 ### 7.4 AI for Explanation and Routing
 
@@ -287,20 +287,20 @@ Next.js App (UI + Route Handlers)
 LangGraph Workflow
   |
   +--> Concierge Node
-  +--> Property Intelligence Node
-  +--> Financing Node
-  +--> Offer Strategy Node
+  +--> Buyer Guidance Node
+  +--> Seller Guidance Node
+  +--> Workflow Coordination Node
   +--> Compliance / Review Node
 ```
 
 ### Runtime Flow
 
 1. User signs in and creates a deal
-2. User enters buyer profile and listing
+2. User selects a buyer or seller workflow
 3. App stores deal state in Supabase
 4. App triggers LangGraph workflow
 5. Workflow reads context, runs nodes, writes outputs
-6. UI renders analysis, financing scenarios, and next actions
+6. UI renders guidance, checklist items, and next actions
 7. User iterates until ready to proceed
 
 ---
@@ -318,35 +318,32 @@ Handles:
 - Updating deal state
 - Tracking current workflow status
 
-### 9.2 Property Intelligence Node
+### 9.2 Buyer Guidance Node
 
 Responsibilities:
 
-- Listing parsing
-- Property summary
-- Comparable estimation
-- Risk flagging
-- HOA / disclosure summarization
+- Buyer readiness guidance
+- Next-step recommendation generation
+- Missing-information identification
+- Buyer-specific blocker flagging
 
-### 9.3 Financing Node
-
-Responsibilities:
-
-- Affordability estimation
-- Loan scenario modeling
-- Payment calculation
-- Cash-to-close estimates
-
-This node must use deterministic financial functions.
-
-### 9.4 Offer Strategy Node
+### 9.3 Seller Guidance Node
 
 Responsibilities:
 
-- Suggested offer range
-- Negotiation notes
-- Concession ideas
-- Contingency considerations
+- Seller prep guidance
+- Listing-readiness recommendation generation
+- Disclosure and prep reminders
+- Seller-specific blocker flagging
+
+### 9.4 Workflow Coordination Node
+
+Responsibilities:
+
+- Checklist generation
+- Timeline state updates
+- Milestone transitions
+- Coordination between guidance outputs and persisted workflow state
 
 ### 9.5 Compliance / Review Node
 
@@ -363,25 +360,25 @@ Responsibilities:
 
 ```mermaid
 flowchart TD
-    A[User Input: Buyer Profile + Listing] --> B[Concierge Node]
-    B --> C[Property Intelligence Node]
-    B --> D[Financing Node]
-    C --> E[Offer Strategy Node]
+    A[User Input: Buyer or Seller Intake] --> B[Concierge Node]
+    B --> C[Buyer Guidance Node]
+    B --> D[Seller Guidance Node]
+    C --> E[Workflow Coordination Node]
     D --> E
     E --> F[Compliance / Review Node]
     F --> G[Persist Outputs to Deal State]
-    G --> H[Render Results in Buyer Workspace]
+    G --> H[Render Results in Role Workspace]
     H --> I{User Action}
     I -->|Refine Inputs| B
-    I -->|Proceed with Deal| J[Create / Update Milestones]
+    I -->|Advance Workflow| J[Create / Update Milestones]
     J --> K[Transaction Workspace]
 ```
 
 ### Workflow Notes
 
 - **Concierge Node** is the entry point and router
-- **Property Intelligence** and **Financing** can run independently, then merge
-- **Offer Strategy** depends on both property and financing context
+- **Buyer Guidance** and **Seller Guidance** are selected based on deal role
+- **Workflow Coordination** converts guidance into structured checklist and milestone state
 - **Compliance / Review** is the final gate before presentation
 - All outputs should be written back to structured deal state
 
@@ -399,77 +396,57 @@ created_at
 
 ### deals
 
-Represents a buyer transaction workspace.
+Represents a buyer or seller transaction workspace.
 
 ```sql
 id
 user_id
+role
 status
-target_location
-purchase_timeline
+title
+timeline
 created_at
 updated_at
 ```
 
-### buyer_profiles
+### profiles
 
 ```sql
 id
 deal_id
+role
 budget_max
-income_annual
-down_payment_amount
-credit_range
 preferred_locations
+property_address
+property_condition
+user_priorities_json
 created_at
 updated_at
 ```
 
-### properties
+### guidance_outputs
 
 ```sql
 id
 deal_id
-address
-listing_price
-bedrooms
-bathrooms
-sqft
-hoa_fee
-listing_url
-analysis_summary
+role
+summary
 risk_flags_json
+recommended_next_steps_json
+generated_at
+```
+
+### checklists
+
+```sql
+id
+deal_id
+title
+status
+due_date
+metadata_json
 created_at
 updated_at
-```
-
-### financing_scenarios
-
-```sql
-id
-deal_id
-loan_amount
-interest_rate
-loan_term_years
-monthly_payment
-cash_to_close
-down_payment
-property_tax_estimate
-insurance_estimate
-created_at
-```
-
-### offers
-
-```sql
-id
-deal_id
-offer_price
-offer_notes
-recommended_low
-recommended_high
-contingencies_json
-created_at
 ```
 
 ### milestones
@@ -526,7 +503,7 @@ created_at
 Recommended repo structure for the MVP:
 
 ```text
-real-estate-copilot/
+glasshouse/
 ├─ app/
 │  ├─ (marketing)/
 │  │  ├─ page.tsx
@@ -534,15 +511,16 @@ real-estate-copilot/
 │  ├─ dashboard/
 │  │  ├─ page.tsx
 │  │  ├─ deals/[dealId]/page.tsx
-│  │  ├─ deals/[dealId]/property/page.tsx
-│  │  ├─ deals/[dealId]/financing/page.tsx
-│  │  ├─ deals/[dealId]/offer/page.tsx
+│  │  ├─ deals/[dealId]/buyer/page.tsx
+│  │  ├─ deals/[dealId]/seller/page.tsx
+│  │  ├─ deals/[dealId]/checklist/page.tsx
 │  │  └─ deals/[dealId]/timeline/page.tsx
 │  ├─ api/
 │  │  ├─ deals/route.ts
-│  │  ├─ listings/analyze/route.ts
-│  │  ├─ financing/scenarios/route.ts
-│  │  ├─ offers/recommend/route.ts
+│  │  ├─ buyers/intake/route.ts
+│  │  ├─ sellers/intake/route.ts
+│  │  ├─ guidance/generate/route.ts
+│  │  ├─ checklists/generate/route.ts
 │  │  └─ workflow/run/route.ts
 │  ├─ auth/
 │  │  ├─ login/page.tsx
@@ -554,9 +532,9 @@ real-estate-copilot/
 │  ├─ ui/
 │  ├─ forms/
 │  ├─ dashboard/
-│  ├─ property/
-│  ├─ financing/
-│  ├─ offer/
+│  ├─ buyer/
+│  ├─ seller/
+│  ├─ checklist/
 │  └─ timeline/
 │
 ├─ lib/
@@ -569,24 +547,23 @@ real-estate-copilot/
 │  │  ├─ state.ts
 │  │  ├─ nodes/
 │  │  │  ├─ concierge.ts
-│  │  │  ├─ property-intelligence.ts
-│  │  │  ├─ financing.ts
-│  │  │  ├─ offer-strategy.ts
+│  │  │  ├─ buyer-guidance.ts
+│  │  │  ├─ seller-guidance.ts
+│  │  │  ├─ workflow-coordination.ts
 │  │  │  └─ compliance-review.ts
 │  │  └─ tools/
-│  │     ├─ mortgage-calculator.ts
-│  │     ├─ affordability.ts
-│  │     ├─ listing-parser.ts
-│  │     ├─ comp-estimator.ts
+│  │     ├─ checklist-generator.ts
+│  │     ├─ timeline-generator.ts
+│  │     ├─ risk-highlighter.ts
 │  │     └─ milestone-generator.ts
 │  ├─ db/
 │  │  ├─ queries/
 │  │  └─ mutations/
 │  ├─ schemas/
 │  │  ├─ deal.ts
-│  │  ├─ property.ts
-│  │  ├─ financing.ts
-│  │  └─ offer.ts
+│  │  ├─ profile.ts
+│  │  ├─ checklist.ts
+│  │  └─ guidance.ts
 │  ├─ utils/
 │  │  ├─ currency.ts
 │  │  ├─ dates.ts
@@ -649,10 +626,10 @@ AI outputs should be stored as structured objects, not only plain text blobs.
 
 Define input and output contracts for:
 
-- Buyer profile
-- Property analysis
-- Financing scenarios
-- Offer recommendations
+- Buyer intake
+- Seller intake
+- Guidance outputs
+- Checklist items
 
 ### 13.5 Add Auditability Early
 
@@ -673,7 +650,7 @@ The system must prevent unsafe or misleading outputs.
 
 Important safeguards:
 
-- deterministic financial calculations
+- deterministic workflow state
 - audit logs for AI outputs
 - disclaimers for financial/legal advice
 - confidence checks where appropriate
@@ -681,9 +658,9 @@ Important safeguards:
 
 Examples:
 
-- Allowed: "Here is an estimated payment scenario"
-- Not allowed: "You are definitely approved for this mortgage"
-- Allowed: "Here are possible offer considerations"
+- Allowed: "Here are the next steps commonly needed before listing"
+- Not allowed: "This property is definitely ready to list"
+- Allowed: "Here are possible questions to ask your agent"
 - Not allowed: "This contract language is legally safe"
 
 ---
@@ -700,35 +677,25 @@ Deliverables:
 - Deal creation flow
 - Base schema and migrations
 
-### Phase 2 — Buyer Intake + Property Analysis
+### Phase 2 — Buyer and Seller Intake
 
 Deliverables:
 
 - Buyer profile form
-- Listing input flow
-- Property summary
-- Risk analysis
-- Comparable estimate stub
+- Seller intake form
+- Role-based deal creation
+- Intake persistence
 
-### Phase 3 — Financing Engine
-
-Deliverables:
-
-- Mortgage calculator
-- Affordability scenarios
-- Cash-to-close estimate
-- Financing summary card
-
-### Phase 4 — Offer Workspace
+### Phase 3 — Guidance and Checklists
 
 Deliverables:
 
-- Offer recommendation range
-- Negotiation notes
-- Contingency options
-- Offer history
+- Guidance generation
+- Checklist generation
+- Role-specific next-step cards
+- Risk and blocker summaries
 
-### Phase 5 — Transaction Workspace
+### Phase 4 — Transaction Workspace
 
 Deliverables:
 
@@ -737,6 +704,15 @@ Deliverables:
 - Document uploads
 - Workflow run history
 
+### Phase 5 — Expanded Intelligence
+
+Deliverables:
+
+- More tailored guidance prompts
+- Better milestone automation
+- Optional financial tools where relevant
+- Human review and compliance hardening
+
 ---
 
 ## 16. Success Metrics
@@ -744,9 +720,9 @@ Deliverables:
 Initial metrics to evaluate product viability:
 
 - Number of deals created
-- Number of listings analyzed
-- Financing scenario usage rate
-- Offer recommendation usage rate
+- Buyer intake completion rate
+- Seller intake completion rate
+- Checklist engagement rate
 - Return usage per active deal
 
 Long-term metrics:
@@ -793,7 +769,7 @@ The long-term value lies in:
 - structured deal workflows
 - persistent transaction context
 - trustworthy decision support
-- operational simplicity for the buyer
+- operational simplicity for both buyer and seller
 
 ---
 
@@ -803,11 +779,11 @@ If building this as a solo or small-team MVP, start with exactly this scope:
 
 - Auth
 - Create deal
-- Enter buyer profile
-- Paste listing
-- Run property analysis
-- Run financing scenarios
-- Produce offer recommendation
+- Select buyer or seller role
+- Complete intake
+- Generate guidance
+- Generate checklist
+- Render timeline and workspace
 - Save outputs to workspace
 
 That is enough to test user value and early willingness to pay.

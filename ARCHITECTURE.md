@@ -3,11 +3,10 @@
 ## Overview
 
 Glasshouse is designed as a **workflow-first system** with structured
-deal state.
+deal state for both buyer-side and seller-side assistance.
 
 The architecture emphasizes:
 
--   deterministic financial calculations
 -   structured data persistence
 -   AI-assisted workflow orchestration
 -   human review capability
@@ -46,9 +45,9 @@ Supabase Postgres stores:
 
 -   users
 -   deals
--   properties
--   financing scenarios
--   offers
+-   profiles
+-   checklists
+-   guidance outputs
 -   milestones
 -   documents
 
@@ -57,9 +56,9 @@ Supabase Postgres stores:
 LangGraph coordinates specialized nodes:
 
 -   Concierge Node
--   Property Intelligence Node
--   Financing Node
--   Offer Strategy Node
+-   Buyer Guidance Node
+-   Seller Guidance Node
+-   Workflow Coordination Node
 -   Compliance Node
 
 Each node performs a specific task and writes outputs back to the deal
@@ -76,9 +75,9 @@ state.
 2.  **Structured Deal State**\
     All outputs are persisted in structured database records.
 
-3.  **Deterministic Calculations**\
-    Financial calculations use deterministic functions rather than LLM
-    inference.
+3.  **Deterministic Workflows**\
+    Timeline state, checklist state, and any calculations should use
+    deterministic application logic rather than LLM inference.
 
 4.  **AI for Explanation**\
     LLMs assist with summarization, explanation, and workflow routing.
