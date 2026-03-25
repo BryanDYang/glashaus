@@ -170,6 +170,16 @@ Users can upload or attach transaction documents such as:
 
 The system should organize these by deal and make them retrievable from the workspace.
 
+Document policy boundary:
+
+- Raw files are stored in Supabase Storage by default.
+- Document metadata and derived workflow state are stored in Supabase Postgres.
+- Raw files require per-deal authorization before any read, download, preview, or processing action.
+- AI processing of raw documents must be explicit and scoped. The system should not grant AI agents automatic access to every file in a deal.
+- Summaries, extracted fields, and document-derived notes are sensitive data and should follow the same authorization model as the deal.
+- Every document upload, access, parse, export, and AI-processing event should be audit logged.
+- Future BYOS support may allow users to connect a cloud drive or external storage provider, but it should remain an optional storage mode rather than the default MVP path.
+
 ---
 
 ## 6. Technical Stack
@@ -223,6 +233,14 @@ Used for:
 - Pre-approval letters
 - Transaction documents
 
+Security expectations:
+
+- Private buckets only
+- Short-lived signed URLs or server-mediated access only
+- Storage policies tied to deal membership and role
+- No public document URLs
+- No broad service-level access from AI workflow components
+
 ### AI / Workflow Orchestration
 
 **LangGraph (JavaScript/TypeScript)**
@@ -267,6 +285,10 @@ LLMs should **not** be the source of truth for financial calculations.
 
 Where outputs become regulated, legal, or highly sensitive, the system should escalate rather than hallucinate certainty.
 
+### 7.6 Explicit Document Access Controls
+
+Raw documents are not general-purpose AI context. Access to stored files must be intentionally authorized, narrowly scoped, and fully auditable.
+
 ---
 
 ## 8. System Architecture
@@ -298,10 +320,22 @@ LangGraph Workflow
 1. User signs in and creates a deal
 2. User selects a buyer or seller workflow
 3. App stores deal state in Supabase
-4. App triggers LangGraph workflow
-5. Workflow reads context, runs nodes, writes outputs
-6. UI renders guidance, checklist items, and next actions
-7. User iterates until ready to proceed
+4. User uploads or links documents into the deal workspace
+5. App authorizes any document access or processing request
+6. App triggers LangGraph workflow
+7. Workflow reads permitted context, runs nodes, writes outputs
+8. UI renders guidance, checklist items, document state, and next actions
+9. User iterates until ready to proceed
+
+### Document Access Policy
+
+- Documents are private by default.
+- Authorization must be enforced at both the application layer and the storage policy layer.
+- AI workflows should consume the minimum document content required for a specific task.
+- Raw document text should not be retained in prompts, logs, or derived stores unless there is a specific product need and an explicit retention policy.
+- Parsed summaries should be editable, reviewable, and attributable to their source document and workflow run.
+- Admin or support access to customer files should be exceptional, logged, and limited by role.
+- BYOS can be introduced later for users who want external document custody, but the permission, audit, and AI-use model should remain consistent across both storage modes.
 
 ---
 
