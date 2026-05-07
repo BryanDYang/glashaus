@@ -6,7 +6,7 @@ export default function HomePage() {
     <main className="page-shell">
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Glasshouse</p>
+          <p className="eyebrow">Glashaus</p>
           <h1>Structured deal coordination for real estate teams.</h1>
           <p className="lede">
             A workflow-first workspace for buyer and seller transactions,
